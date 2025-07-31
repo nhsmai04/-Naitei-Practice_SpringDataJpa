@@ -1,20 +1,21 @@
 package org.example.spring_jpa.service;
 
-import org.example.spring_jpa.entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.example.spring_jpa.repository.UserRepository;
+import org.example.spring_jpa.dto.UserDto;
+import org.example.spring_jpa.model.User;
 
 
+public interface UserService {
 
-@Service
-public class UserService {
-    @Autowired
-    private UserRepository userRepository;
+    Iterable<User> getAllUsers();
 
-    public Iterable<User> getListUser()
-    {
-        Iterable<User> user1 = userRepository.findAll();
-        return user1;
-    }
+    User getUserById(Integer id);
+    User getUserByFirstName(String firstname);
+    User getUserByLastName(String lastname);
+    User getUserByEmail(String email);
+
+    void saveUser(User user);
+    void deleteUser(User user);
+    void deleteUserById(int id);
+    void registerUser(UserDto userDto);
+
 }
